@@ -17,7 +17,7 @@ export class ProductoService {
   //Obtener todas los productos
   async findAll(): Promise<ProductoEntity[]> {
     return await this.productRepository.find({
-      relations: ['productos'],
+      relations: ['tienda'],
     });
   }
 
