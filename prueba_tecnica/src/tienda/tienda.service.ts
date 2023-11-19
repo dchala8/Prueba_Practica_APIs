@@ -38,6 +38,12 @@ export class TiendaService {
 
   //Crear una Tienda
   async create(tienda: TiendaEntity): Promise<TiendaEntity> {
+    if (tienda.ciudad.length > 3) {
+      throw new BusinessLogicException(
+        'La ciudad esta dada por un codigo de 3 caracteres',
+        BusinessError.NOT_FOUND,
+      );
+    }
     return await this.tiendaRepository.save(tienda);
   }
 

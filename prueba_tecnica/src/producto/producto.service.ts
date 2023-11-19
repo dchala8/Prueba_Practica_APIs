@@ -38,6 +38,12 @@ export class ProductoService {
 
   //Crear un producto
   async create(producto: ProductoEntity): Promise<ProductoEntity> {
+    if (producto.tipo != 'No perecedero' && producto.tipo != 'Perecedero') {
+      throw new BusinessLogicException(
+        'El tipo de producto solo puede ser Perecedoro o No perecedero',
+        BusinessError.NOT_FOUND,
+      );
+    }
     return await this.productRepository.save(producto);
   }
 

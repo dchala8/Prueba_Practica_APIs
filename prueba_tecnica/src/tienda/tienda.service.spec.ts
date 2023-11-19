@@ -31,7 +31,7 @@ describe('TiendaService', () => {
     for (let i = 0; i < 5; i++) {
       const tienda: TiendaEntity = await repository.save({
         nombre: faker.company.name(),
-        ciudad: faker.location.city(),
+        ciudad: 'MED',
         direccion: faker.location.direction(),
       });
       tiendaList.push(tienda);
@@ -68,7 +68,7 @@ describe('TiendaService', () => {
     const tienda: TiendaEntity = {
       id: '',
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'MED',
       direccion: faker.location.direction(),
       producto: new ProductoEntity(),
     };

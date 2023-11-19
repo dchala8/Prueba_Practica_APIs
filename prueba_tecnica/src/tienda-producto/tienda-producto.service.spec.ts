@@ -38,7 +38,7 @@ describe('TiendaProductoService', () => {
     for (let i = 0; i < 5; i++) {
       const tienda: TiendaEntity = await tiendaRepository.save({
         nombre: faker.company.name(),
-        ciudad: faker.location.city(),
+        ciudad: 'BOG',
         direccion: faker.location.streetAddress(),
       });
       tiendas.push(tienda);
@@ -47,7 +47,7 @@ describe('TiendaProductoService', () => {
     producto = await productoRepository.save({
       nombre: faker.company.name(),
       precio: faker.commerce.price(),
-      tipo: faker.location.streetAddress(),
+      tipo: 'Perecedero',
       tiendas: tiendas,
     });
   };
@@ -59,14 +59,14 @@ describe('TiendaProductoService', () => {
   it('addStoreToProduct should add an tienda to a product', async () => {
     const newTienda: TiendaEntity = await tiendaRepository.save({
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'BOG',
       direccion: faker.location.streetAddress(),
     });
 
     const newProducto: ProductoEntity = await productoRepository.save({
       nombre: faker.company.name(),
       precio: faker.commerce.price(),
-      tipo: faker.location.streetAddress(),
+      tipo: 'No perecedero',
       tiendas: [],
     });
 
@@ -85,7 +85,7 @@ describe('TiendaProductoService', () => {
   it('addStoreToProduct should thrown exception for an invalid tienda', async () => {
     const newTienda: TiendaEntity = await tiendaRepository.save({
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'BOG',
       direccion: faker.location.streetAddress(),
     });
 
@@ -100,7 +100,7 @@ describe('TiendaProductoService', () => {
   it('addStoreToProduct should throw an exception for an invalid producto', async () => {
     const newTienda: TiendaEntity = await tiendaRepository.save({
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'BOG',
       direccion: faker.location.streetAddress(),
     });
 
@@ -161,7 +161,7 @@ describe('TiendaProductoService', () => {
   it('findStoreFromProduct should throw an exception for an tienda not associated to the producto', async () => {
     const newTienda: TiendaEntity = await tiendaRepository.save({
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'BOG',
       direccion: faker.location.streetAddress(),
     });
 
@@ -176,7 +176,7 @@ describe('TiendaProductoService', () => {
   it('updateStoresFromProduct should update Tienda list for a Product', async () => {
     const newTienda: TiendaEntity = await tiendaRepository.save({
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'BOG',
       direccion: faker.location.streetAddress(),
     });
 
@@ -192,7 +192,7 @@ describe('TiendaProductoService', () => {
   it('updateStoresFromProduct should throw an exception for an invalid producto', async () => {
     const newTienda: TiendaEntity = await tiendaRepository.save({
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'BOG',
       direccion: faker.location.streetAddress(),
     });
 
@@ -253,7 +253,7 @@ describe('TiendaProductoService', () => {
   it('deleteStoreFromProduct should thrown an exception for an non asocciated tienda', async () => {
     const newTienda: TiendaEntity = await tiendaRepository.save({
       nombre: faker.company.name(),
-      ciudad: faker.location.city(),
+      ciudad: 'BOG',
       direccion: faker.location.streetAddress(),
     });
 
