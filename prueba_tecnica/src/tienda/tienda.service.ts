@@ -17,7 +17,7 @@ export class TiendaService {
   //Obtener todas las Tiendas
   async findAll(): Promise<TiendaEntity[]> {
     return await this.tiendaRepository.find({
-      relations: ['productos'],
+      relations: ['producto'],
     });
   }
 
@@ -25,7 +25,7 @@ export class TiendaService {
   async findOne(id: string): Promise<TiendaEntity> {
     const tienda: TiendaEntity = await this.tiendaRepository.findOne({
       where: { id },
-      relations: ['productos'],
+      relations: ['producto'],
     });
     if (!tienda)
       throw new BusinessLogicException(

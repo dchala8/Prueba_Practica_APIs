@@ -43,9 +43,9 @@ describe('ProductoService', () => {
   });
 
   it('findAll should return all Productos', async () => {
-    const productos: ProductoEntity[] = await service.findAll();
-    expect(productos).not.toBeNull();
-    expect(productos).toHaveLength(productoList.length);
+    const producto: ProductoEntity[] = await service.findAll();
+    expect(producto).not.toBeNull();
+    expect(producto).toHaveLength(productoList.length);
   });
 
   it('findOne should return a Product by id', async () => {
@@ -70,7 +70,7 @@ describe('ProductoService', () => {
       nombre: faker.company.name(),
       tipo: faker.location.city(),
       precio: faker.location.direction(),
-      tienda: new TiendaEntity(),
+      tiendas: [new TiendaEntity()],
     };
 
     const newProducto: ProductoEntity = await service.create(producto);

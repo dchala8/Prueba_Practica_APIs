@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { faker } from '@faker-js/faker';
 import { TiendaEntity } from '../tienda/tienda.entity';
+import { ProductoEntity } from '../producto/producto.entity';
 
 describe('TiendaService', () => {
   let service: TiendaService;
@@ -69,7 +70,7 @@ describe('TiendaService', () => {
       nombre: faker.company.name(),
       ciudad: faker.location.city(),
       direccion: faker.location.direction(),
-      productos: [],
+      producto: new ProductoEntity(),
     };
 
     const newTienda: TiendaEntity = await service.create(tienda);

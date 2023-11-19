@@ -17,7 +17,7 @@ export class ProductoService {
   //Obtener todas los productos
   async findAll(): Promise<ProductoEntity[]> {
     return await this.productRepository.find({
-      relations: ['tienda'],
+      relations: ['tiendas'],
     });
   }
 
@@ -25,7 +25,7 @@ export class ProductoService {
   async findOne(id: string): Promise<ProductoEntity> {
     const producto: ProductoEntity = await this.productRepository.findOne({
       where: { id },
-      relations: ['tienda'],
+      relations: ['tiendas'],
     });
     if (!producto)
       throw new BusinessLogicException(
