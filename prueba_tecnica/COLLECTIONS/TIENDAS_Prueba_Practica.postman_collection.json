@@ -1,0 +1,855 @@
+{
+	"info": {
+		"_postman_id": "9b97a3a2-9cb0-4d9e-83b8-070f19459c17",
+		"name": "TIENDAS_Prueba_Practica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26920168",
+		"_collection_link": "https://blue-station-978338.postman.co/workspace/C2JD~a6519bd2-4cdf-4e86-9b12-b4ee7b39b989/collection/26920168-9b97a3a2-9cb0-4d9e-83b8-070f19459c17?action=share&source=collection_link&creator=26920168"
+	},
+	"item": [
+		{
+			"name": "Crear Tienda valido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();\r",
+							"pm.collectionVariables.set(\"GUID_TIENDA\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"MED\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Tienda valido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"MED\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/stores",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"82-CUG7M12q3GA1Vvn79lCc2RQLEW0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:05:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"PRODUCTO PRUEBA\",\n    \"ciudad\": \"MED\",\n    \"direccion\": \"calle prueba # prueba-prueba\",\n    \"id\": \"044711f2-5bf4-4b38-bed7-69bc2a4aa3b6\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear Tienda invalido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"MEDELLIN\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Tienda invalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"MEDELLIN\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/stores",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-Qx9d1UhBh7TO2ObDuSLQdXfipcU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:05:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La ciudad esta dada por un codigo de 3 caracteres\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todos las tiendas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los productos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/stores",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "442"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ba-qEiCsq388GODmRn4VMmPRbFqnds\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:05:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"6a32ab31-1306-4dd0-b7d0-9352a48c2cda\",\n        \"nombre\": \"PRODUCTO PRUEBA\",\n        \"ciudad\": \"MED\",\n        \"direccion\": \"calle prueba # prueba-prueba\",\n        \"producto\": null\n    },\n    {\n        \"id\": \"1bbf3542-59be-45fc-8aae-8e349f0346ad\",\n        \"nombre\": \"PRODUCTO PRUEBA\",\n        \"ciudad\": \"MED\",\n        \"direccion\": \"calle prueba # prueba-prueba\",\n        \"producto\": null\n    },\n    {\n        \"id\": \"044711f2-5bf4-4b38-bed7-69bc2a4aa3b6\",\n        \"nombre\": \"PRODUCTO PRUEBA\",\n        \"ciudad\": \"MED\",\n        \"direccion\": \"calle prueba # prueba-prueba\",\n        \"producto\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener una tienda por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores/{{GUID_TIENDA}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						"{{GUID_TIENDA}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un producto por ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/stores/{{GUID_TIENDA}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores",
+								"{{GUID_TIENDA}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "146"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"92-9itIlk+YVzHRedaY491bCFTxbnA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:06:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"044711f2-5bf4-4b38-bed7-69bc2a4aa3b6\",\n    \"nombre\": \"PRODUCTO PRUEBA\",\n    \"ciudad\": \"MED\",\n    \"direccion\": \"calle prueba # prueba-prueba\",\n    \"producto\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una tienda por un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores/f415972a-e34d-178c-b37b-f9ef72b542c5",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						"f415972a-e34d-178c-b37b-f9ef72b542c5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un producto por un ID que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/stores/f415972a-e34d-178c-b37b-f9ef72b542c5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores",
+								"f415972a-e34d-178c-b37b-f9ef72b542c5"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"49-wL3s6HXtU4m+1pQXlvUUv/C3HCs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:07:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La tienda con el ID Dado no fue encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una tienda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores/{{GUID_TIENDA}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						"{{GUID_TIENDA}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar una tienda",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/stores/{{GUID_TIENDA}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores",
+								"{{GUID_TIENDA}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"82-zgQBWyolbWkvdN7gIbI2EcAYprU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:07:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"PRODUCTO PRUEBA\",\n    \"ciudad\": \"BOG\",\n    \"direccion\": \"calle prueba # prueba-prueba\",\n    \"id\": \"044711f2-5bf4-4b38-bed7-69bc2a4aa3b6\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una tienda con un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stores/f415972a-e34d-178c-b37b-f9ef72b542c5",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						"f415972a-e34d-178c-b37b-f9ef72b542c5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar una tienda con un ID que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"BOG\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/stores/f415972a-e34d-178c-b37b-f9ef72b542c5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores",
+								"f415972a-e34d-178c-b37b-f9ef72b542c5"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"47-nER+o0O6nsCNiY8UoEPgKFKw8fA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:12:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La tienda dada por ese ID no se encontro\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar una tienda por su ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores/{{GUID_TIENDA}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						"{{GUID_TIENDA}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un producto por su ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/stores/{{GUID_TIENDA}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores",
+								"{{GUID_TIENDA}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:14:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar una tienda con un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/stores/f415972a-e34d-178c-b37b-f9ef72b542c5",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stores",
+						"f415972a-e34d-178c-b37b-f9ef72b542c5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar un producto con un ID que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/stores/f415972a-e34d-178c-b37b-f9ef72b542c5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stores",
+								"f415972a-e34d-178c-b37b-f9ef72b542c5"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"47-nER+o0O6nsCNiY8UoEPgKFKw8fA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:14:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La tienda dada por ese ID no se encontro\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "GUID_TIENDA",
+			"value": ""
+		}
+	]
+}
