@@ -1,0 +1,896 @@
+{
+	"info": {
+		"_postman_id": "850ba58a-4ce1-4597-acbc-eaf8dbe4ac75",
+		"name": "ASOCIACION_Prueba_Practica Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26920168",
+		"_collection_link": "https://blue-station-978338.postman.co/workspace/C2JD~a6519bd2-4cdf-4e86-9b12-b4ee7b39b989/collection/26920168-850ba58a-4ce1-4597-acbc-eaf8dbe4ac75?action=share&source=collection_link&creator=26920168"
+	},
+	"item": [
+		{
+			"name": "Agregar una nueva tienda a las oferentes de un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();\r",
+							"pm.collectionVariables.set(\"GUID_PRODUCTO\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"precio\":\"200000\",\r\n    \"tipo\":\"Perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_TIENDA}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_PRODUCTO}}",
+						"stores",
+						"{{GUID_TIENDA}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una nueva tienda a las oferentes de un producto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"precio\":\"200000\",\r\n    \"tipo\":\"Perecedero\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_TIENDA}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_PRODUCTO}}",
+								"stores",
+								"{{GUID_TIENDA}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "253"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"fd-CqG3drxBJpiZsmkpuQ4Rpx1Vvvg\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:25:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"48003aac-04c8-45f8-8225-fc0562bb259e\",\n    \"nombre\": \"PRODUCTO PRUEBA\",\n    \"precio\": \"200000\",\n    \"tipo\": \"Perecedero\",\n    \"tiendas\": [\n        {\n            \"id\": \"6c96907c-28ac-4966-8559-94806c4de043\",\n            \"nombre\": \"PRODUCTO PRUEBA\",\n            \"ciudad\": \"MED\",\n            \"direccion\": \"calle prueba # prueba-prueba\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar una tienda que no existe a las oferentes de un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"precio\":\"200000\",\r\n    \"tipo\":\"NI PERECEDERO, NI NO PERECEDERO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_PRODUCTO}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_PRODUCTO}}",
+						"stores",
+						"{{GUID_PRODUCTO}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar una tienda que no existe a las oferentes de un producto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"precio\":\"200000\",\r\n    \"tipo\":\"NI PERECEDERO, NI NO PERECEDERO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_PRODUCTO}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_PRODUCTO}}",
+								"stores",
+								"{{GUID_PRODUCTO}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"49-Y4/St+D7RWoDkTBLQ7kV0nBuA84\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:26:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La tienda con el ID dado no fue encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una tiendas que ofrece un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_PRODUCTO}}",
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las tiendas que ofrecen un producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_PRODUCTO}}",
+								"stores"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "132"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"84-ZNW8WX9u7Zlp4ijmErWdnJHt5EE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:27:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"6c96907c-28ac-4966-8559-94806c4de043\",\n        \"nombre\": \"PRODUCTO PRUEBA\",\n        \"ciudad\": \"MED\",\n        \"direccion\": \"calle prueba # prueba-prueba\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener una tienda que ofrece un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_TIENDA}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_PRODUCTO}}",
+						"stores",
+						"{{GUID_TIENDA}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una tienda que ofrece un producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_TIENDA}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_PRODUCTO}}",
+								"stores",
+								"{{GUID_TIENDA}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"82-NbOcJ5pP7We9CWHwZzE1k5mYPmU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:27:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"6c96907c-28ac-4966-8559-94806c4de043\",\n    \"nombre\": \"PRODUCTO PRUEBA\",\n    \"ciudad\": \"MED\",\n    \"direccion\": \"calle prueba # prueba-prueba\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una tienda que ofrece un producto que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_TIENDA}}/stores/{{GUID_TIENDA}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_TIENDA}}",
+						"stores",
+						"{{GUID_TIENDA}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una tienda que ofrece un producto que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_TIENDA}}/stores/{{GUID_TIENDA}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_TIENDA}}",
+								"stores",
+								"{{GUID_TIENDA}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4b-x/NpNlIgn4/MEWgprl4FJ5GCKbs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:27:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El producto con el ID dado no fue encontrado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar las tiendas que ofrecen un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"MED\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n},\r\n{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA2\",\r\n    \"ciudad\":\"Bog\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n},\r\n{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA3\",\r\n    \"ciudad\":\"CIV\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_PRODUCTO}}",
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar las tiendas que ofrecen un producto",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA\",\r\n    \"ciudad\":\"MED\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n},\r\n{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA2\",\r\n    \"ciudad\":\"Bog\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n},\r\n{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA3\",\r\n    \"ciudad\":\"CIV\",\r\n    \"direccion\":\"calle prueba # prueba-prueba\"\r\n}\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_PRODUCTO}}",
+								"stores"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "385"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"181-d1erVzdSmtDA5Wt0okFTODtfq38\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:28:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"48003aac-04c8-45f8-8225-fc0562bb259e\",\n    \"nombre\": \"PRODUCTO PRUEBA\",\n    \"precio\": \"200000\",\n    \"tipo\": \"Perecedero\",\n    \"tiendas\": [\n        {\n            \"nombre\": \"PRODUCTO PRUEBA\",\n            \"ciudad\": \"MED\",\n            \"direccion\": \"calle prueba # prueba-prueba\"\n        },\n        {\n            \"nombre\": \"PRODUCTO PRUEBA2\",\n            \"ciudad\": \"Bog\",\n            \"direccion\": \"calle prueba # prueba-prueba\"\n        },\n        {\n            \"nombre\": \"PRODUCTO PRUEBA3\",\n            \"ciudad\": \"CIV\",\n            \"direccion\": \"calle prueba # prueba-prueba\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar las tiendas que ofrecen un producto, con una tienda inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA NEW\",\r\n    \"precio\":\"1\",\r\n    \"tipo\":\"No perecedero\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_TIENDA}}/stores",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_TIENDA}}",
+						"stores"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar las tiendas que ofrecen un producto, con una tienda inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"nombre\":\"PRODUCTO PRUEBA NEW\",\r\n    \"precio\":\"1\",\r\n    \"tipo\":\"No perecedero\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_TIENDA}}/stores",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_TIENDA}}",
+								"stores"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4b-x/NpNlIgn4/MEWgprl4FJ5GCKbs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:30:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El producto con el ID dado no fue encontrado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar una tienda que ofrece un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_TIENDA}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_PRODUCTO}}",
+						"stores",
+						"{{GUID_TIENDA}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una tienda que ofrece un producto",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_TIENDA}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_PRODUCTO}}",
+								"stores",
+								"{{GUID_TIENDA}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:31:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar una tienda que no ofrece un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_PRODUCTO}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"products",
+						"{{GUID_PRODUCTO}}",
+						"stores",
+						"{{GUID_PRODUCTO}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una tienda que no ofrece un producto",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/products/{{GUID_PRODUCTO}}/stores/{{GUID_PRODUCTO}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"{{GUID_PRODUCTO}}",
+								"stores",
+								"{{GUID_PRODUCTO}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"49-Y4/St+D7RWoDkTBLQ7kV0nBuA84\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Nov 2023 03:31:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La tienda con el ID dado no fue encontrada\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "GUID_PRODUCTO",
+			"value": "48003aac-04c8-45f8-8225-fc0562bb259e"
+		},
+		{
+			"key": "GUID_TIENDA",
+			"value": "6c96907c-28ac-4966-8559-94806c4de043",
+			"type": "string"
+		}
+	]
+}
